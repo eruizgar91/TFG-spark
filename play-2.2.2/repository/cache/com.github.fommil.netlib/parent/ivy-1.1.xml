@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="2.0" xmlns:m="http://ant.apache.org/ivy/maven">
+	<info organisation="com.github.fommil.netlib"
+		module="parent"
+		revision="1.1"
+		status="release"
+		publication="20131012003241"
+	>
+		<license name="BSD 3 Clause" url="http://opensource.org/licenses/BSD-3-Clause" />
+		<description homepage="https://github.com/fommil/netlib-java">
+		Mission-critical components for linear algebra systems.
+		</description>
+		<m:dependency.management__org.projectlombok__lombok__scope>provided</m:dependency.management__org.projectlombok__lombok__scope>
+		<m:properties__project.build.sourceEncoding>UTF-8</m:properties__project.build.sourceEncoding>
+		<m:dependency.management__org.projectlombok__lombok__version>1.12.2</m:dependency.management__org.projectlombok__lombok__version>
+		<m:dependency.management__com.github.fommil__jniloader__version>1.1</m:dependency.management__com.github.fommil__jniloader__version>
+		<m:dependency.management__net.sourceforge.f2j__arpack_combined_all__scope>provided</m:dependency.management__net.sourceforge.f2j__arpack_combined_all__scope>
+		<m:dependency.management__net.sourceforge.f2j__arpack_combined_all__version>0.1</m:dependency.management__net.sourceforge.f2j__arpack_combined_all__version>
+		<m:dependency.management__com.google.code.findbugs__jsr305__version>2.0.2</m:dependency.management__com.google.code.findbugs__jsr305__version>
+		<m:dependency.management__com.google.guava__guava__version>15.0</m:dependency.management__com.google.guava__guava__version>
+		<m:properties__sonatypeOssDistMgmtSnapshotsUrl>https://oss.sonatype.org/content/repositories/snapshots/</m:properties__sonatypeOssDistMgmtSnapshotsUrl>
+		<m:dependency.management__com.github.fommil__java-logging__version>1.1</m:dependency.management__com.github.fommil__java-logging__version>
+		<m:dependency.management__net.sf.opencsv__opencsv__version>2.3</m:dependency.management__net.sf.opencsv__opencsv__version>
+		<m:maven.plugins>org.apache.maven.plugins__maven-enforcer-plugin__1.0|org.apache.maven.plugins__maven-enforcer-plugin__1.0</m:maven.plugins>
+	</info>
+	<configurations>
+		<conf name="default" visibility="public" description="runtime dependencies and master artifact can be used with this conf" extends="runtime,master"/>
+		<conf name="master" visibility="public" description="contains only the artifact published by this module itself, with no transitive dependencies"/>
+		<conf name="compile" visibility="public" description="this is the default scope, used if none is specified. Compile dependencies are available in all classpaths."/>
+		<conf name="provided" visibility="public" description="this is much like compile, but indicates you expect the JDK or a container to provide it. It is only available on the compilation classpath, and is not transitive."/>
+		<conf name="runtime" visibility="public" description="this scope indicates that the dependency is not required for compilation, but is for execution. It is in the runtime and test classpaths, but not the compile classpath." extends="compile"/>
+		<conf name="test" visibility="private" description="this scope indicates that the dependency is not required for normal use of the application, and is only available for the test compilation and execution phases." extends="runtime"/>
+		<conf name="system" visibility="public" description="this scope is similar to provided except that you have to provide the JAR which contains it explicitly. The artifact is always available and is not looked up in a repository."/>
+		<conf name="sources" visibility="public" description="this configuration contains the source artifact of this module, if any."/>
+		<conf name="javadoc" visibility="public" description="this configuration contains the javadoc artifact of this module, if any."/>
+		<conf name="optional" visibility="public" description="contains all optional dependencies"/>
+	</configurations>
+	<publications>
+	</publications>
+	<dependencies>
+		<dependency org="junit" name="junit" rev="4.11" force="true" conf="test->runtime(*),master(*)"/>
+		<override org="org.projectlombok" module="lombok" matcher="exact" rev="1.12.2"/>
+		<override org="com.google.guava" module="guava" matcher="exact" rev="15.0"/>
+		<override org="com.google.code.findbugs" module="jsr305" matcher="exact" rev="2.0.2"/>
+		<override org="net.sourceforge.f2j" module="arpack_combined_all" matcher="exact" rev="0.1"/>
+		<override org="net.sourceforge.f2j" module="arpack_combined_all" matcher="exact" rev="0.1"/>
+		<override org="com.github.fommil" module="jniloader" matcher="exact" rev="1.1"/>
+		<override org="net.sf.opencsv" module="opencsv" matcher="exact" rev="2.3"/>
+		<override org="com.github.fommil" module="java-logging" matcher="exact" rev="1.1"/>
+	</dependencies>
+</ivy-module>
