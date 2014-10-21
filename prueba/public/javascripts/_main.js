@@ -15,7 +15,7 @@
 	$slide = $('.homeSlide');
 	$body = $('body');
 
-	
+	//Hacemos que los botones de la barra de navegación se resalten cuando pasamos sobre ellos y cuando hacemos click.
 	$('.elemento-nav').bind({
 
 		 click: function() {
@@ -30,17 +30,64 @@
 			
 			}
 	});
-	$('#slide-2').bind({
-		mouseenter: function() {
-			$(this).addClass('logo');
-			
-			},
-		mouseleave: function() {
-			$(this).removeClass('logo');
-			
-			}
-	});
-	
+
+	//Con esta funcion hacemos que el logo de Spark se mueva hacia la izquierda con el primer scroll.
+				$(function () {
+					$('.logo').hide();
+					$('.logo').fadeIn(300);
+
+				  var $pos0 = 70;
+				  
+				  $window.scroll(function () {
+				     if ($window.scrollTop() <= $pos0){
+				        $('.logo').removeClass('mov');
+				        
+				    }
+				     else{
+				        $('.logo').addClass('mov');
+				  
+				    	
+
+				     }
+				   });
+				});
+
+
+
+	//Con esta función hacemos que el logo de la barra de navegación aparezca y que se oculte el logo grande.
+
+			$(function () {
+				  $('.logopeque').hide();
+				  var $pos = 140;
+				  $window.scroll(function () {
+				     if ($window.scrollTop() <= $pos){
+				        //$('.logo').removeClass('mov');
+				        $('.logo').fadeIn();
+				    	$('.logopeque').fadeOut();
+				    }
+				     else {
+				     	$('.logopeque').fadeIn();
+				        $('.logo').fadeOut();
+				    
+				     }
+				   });
+				});
+		//Con esta funcion hacemos que cuando pasamos de slide se muestren o no los 
+		//diferentes cuadros que poseen codigo o instrucciónes.		
+			$(function () {
+				  
+				  $('.code-text').hide();
+				  var $pos2 = 400;
+				  var $pos3 = 900;
+				  $window.scroll(function () {
+				     if ($window.scrollTop()>$pos2 && $window.scrollTop()<$pos3)
+				      	$('.code-text').fadeIn();
+				     else {
+				      	$('.code-text').fadeOut();
+				     }
+				   });
+				});
+
     //FadeIn all sections   
 	$body.imagesLoaded( function() {
 		setTimeout(function() {

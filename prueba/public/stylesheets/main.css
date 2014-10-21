@@ -30,7 +30,7 @@ body {
     } 
 
 .elemento-nav {
-    left: 5%;
+    margin-left: 1%;
     display: inline-block;
     padding: 14px;
    
@@ -45,9 +45,26 @@ body {
 #imagenes{
     padding-top:50px;
 }
-ul{
-    margin:0;
+/*Estilo de los cuadros donde ira el código o instrucciones que queramos resaltar.*/
+.code-text{
+    background-color: white;
+    border-color: grey;
+    border-width: 5px;
+    border-style: solid;
+    border-radius: 5px;
+    margin-left: 4%;
+    margin-top: 4%;
+    width: 450px;
+    height:80%;
+
 }
+/*Clase que añadiremos para generar movimientos.*/
+.mov{
+    -ms-transform: translate(-200px,0px); /* IE 9 */
+    -webkit-transform: translate(-200px,0px); /* Chrome, Safari, Opera */
+    transform: translate(-200px,0px); 
+}
+
 /*
  * Remove text-shadow in selection highlight: h5bp.com/i
  * These selection rule sets have to be separate.
@@ -77,12 +94,17 @@ hr {
     padding: 0;
 }
 
+.logopeque {
+    width: 7%;
+}
 /*
  * Remove the gap between images and the bottom of their containers: h5bp.com/i/440
  */
-#slide-0 img{
-   padding-left: 3%;
-   padding-top: 6%;
+.logo{
+   margin-left: 15%;
+   margin-top: 15%;
+   position: relative;
+   
  
 }
 img {
@@ -183,12 +205,10 @@ main {
 	top: 50%;
 }
 	.hsContent h2  {
-		color: #fff8de;
-		background-color: rgba(0,0,0,0.5);
 		padding: 10px 5px;
 		font-size: 35px;
 		line-height: 38px;
-		margin-bottom: 12px;
+		
 	}
 	.hsContent p {
 		width: 400px;
