@@ -42,6 +42,7 @@
 				     if ($window.scrollTop() <= $pos0){
 				        $('.logo').removeClass('mov');
 				        
+				        
 				    }
 				     else{
 				        $('.logo').addClass('mov');
@@ -58,17 +59,19 @@
 
 			$(function () {
 				  $('.logopeque').hide();
+				  $('#header').hide();
 				  var $pos = 140;
 				  $window.scroll(function () {
 				     if ($window.scrollTop() <= $pos){
 				        //$('.logo').removeClass('mov');
 				        $('.logo').fadeIn();
 				    	$('.logopeque').fadeOut();
+				    	$('#header').fadeOut();
 				    }
 				     else {
 				     	$('.logopeque').fadeIn();
 				        $('.logo').fadeOut();
-				    
+				    	$('#header').fadeIn();
 				     }
 				   });
 				});

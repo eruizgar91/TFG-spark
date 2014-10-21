@@ -2,7 +2,7 @@
 [0m[[0mdebug[0m] [0mStarting sandboxed run...[0m
 [0m[[0mdebug[0m] [0mWaiting for threads to exit or System.exit to be called.[0m
 [0m[[0mdebug[0m] [0m  Classpath:[0m
-[0m[[0mdebug[0m] [0m	/home/eruizgar/Descargas/SimpleSparkProject/target/scala-2.10/classes[0m
+[0m[[0mdebug[0m] [0m	/home/eruizgar/TFG-spark/SimpleSparkProject/target/scala-2.10/classes[0m
 [0m[[0mdebug[0m] [0m	/home/eruizgar/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.10.4.jar[0m
 [0m[[0mdebug[0m] [0m	/home/eruizgar/.ivy2/cache/org.apache.spark/spark-core_2.10/jars/spark-core_2.10-1.0.0.jar[0m
 [0m[[0mdebug[0m] [0m	/home/eruizgar/.ivy2/cache/org.apache.hadoop/hadoop-client/jars/hadoop-client-1.0.4.jar[0m
@@ -93,8 +93,8 @@
 [0m[[0mdebug[0m] [0m	/home/eruizgar/.ivy2/cache/net.java.dev.jets3t/jets3t/jars/jets3t-0.7.1.jar[0m
 [0m[[0mdebug[0m] [0m	/home/eruizgar/.ivy2/cache/commons-httpclient/commons-httpclient/jars/commons-httpclient-3.1.jar[0m
 [0m[[0mdebug[0m] [0mWaiting for thread run-main to exit[0m
-[0m[[31merror[0m] [0m(run-main) org.apache.hadoop.mapred.FileAlreadyExistsException: Output directory file:/home/eruizgar/Descargas/SimpleSparkProject/results already exists[0m
-org.apache.hadoop.mapred.FileAlreadyExistsException: Output directory file:/home/eruizgar/Descargas/SimpleSparkProject/results already exists
+[0m[[31merror[0m] [0m(run-main) org.apache.hadoop.mapred.FileAlreadyExistsException: Output directory file:/home/eruizgar/TFG-spark/SimpleSparkProject/results already exists[0m
+org.apache.hadoop.mapred.FileAlreadyExistsException: Output directory file:/home/eruizgar/TFG-spark/SimpleSparkProject/results already exists
 	at org.apache.hadoop.mapred.FileOutputFormat.checkOutputSpecs(FileOutputFormat.java:121)
 	at org.apache.spark.rdd.PairRDDFunctions.saveAsHadoopDataset(PairRDDFunctions.scala:761)
 	at org.apache.spark.rdd.PairRDDFunctions.saveAsHadoopFile(PairRDDFunctions.scala:674)
