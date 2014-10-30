@@ -197,12 +197,24 @@ main {
 	overflow: hidden;
 	position: relative;
 }
+.instrucciones{
+    background-color: white;
+    border-color: black;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 5px;
+    font-size: 40px;
+    padding: 10px;
+    width: 500px;
+    font-size: 35px;
+    line-height: 38px;
 
+}
 .hsContent {
 	max-width: 700px;
 	position: absolute;
 	left: 50%;
-	top: 50%;
+	top: 40%;
 }
 	.hsContent h2  {
 		padding: 10px 5px;
