@@ -53,7 +53,6 @@ body {
     border-style: solid;
     border-radius: 5px;
     margin-left: 4%;
-    margin-top: 4%;
     width: 450px;
     height:80%;
 
@@ -189,6 +188,11 @@ main {
 	background-size: cover;
 	height: 100%;
 	width: 100%;
+}
+.title-little{
+    font-size: 70px;
+    font-variant:bold; 
+    text-align: center;
 }
 
 .hsContainer {
