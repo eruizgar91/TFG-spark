@@ -10,8 +10,22 @@ body {
     font-size: 1em;
     line-height: 1.4;
 }
+@font-face {
+  font-family:BLANCH_CAPS;
+  font-style: normal;
+  font-weight: normal;
+  src: url("font/Blanch_Personal_License/BLANCH_CAPS.otf")
+}
+@font-face {
+  font-family:Nord_Regular;
+  font-style: normal;
+   font-weight: normal;
+  src: url("font/Nordica/Nord_Regular.otf")
+}
 
 #header {
+    font-family:BLANCH_CAPS;
+    font-size: 30px;
     background-color: white;
     border-bottom-color: black;
     border-bottom-width: 2px;
@@ -30,10 +44,9 @@ body {
     } 
 
 .elemento-nav {
-    margin-left: 1%;
     display: inline-block;
-    padding: 14px;
-   
+    margin-left: 10px;
+    padding: 4px;
 }
 
 .inside {
@@ -190,7 +203,8 @@ main {
 	width: 100%;
 }
 .title-little{
-    font-size: 70px;
+    font-family:BLANCH_CAPS; 
+    font-size: 150px;
     font-variant:bold; 
     text-align: center;
 }
@@ -215,14 +229,16 @@ main {
 
 }
 .hsContent {
-	max-width: 700px;
+    
+    max-width: 700px;
 	position: absolute;
 	left: 50%;
 	top: 40%;
 }
 	.hsContent h2  {
-		padding: 10px 5px;
-		font-size: 35px;
+        font-family:Nord_Regular;
+		padding: 10px 20px;
+		font-size: 20px;
 		line-height: 38px;
 		
 	}
@@ -234,16 +250,16 @@ main {
 		color: #b2b2b2;
 		text-decoration: underline;
 	}
-
+/*Imagenes de fondo*/
 /* Slide 1 */
-#slide-1 .bcg {background-image:url('../img/bcg_slide-1.jpg')}
+/*#slide-1 .bcg {background-image:url('../img/bcg_slide-1.jpg')}*/
 #slide-1 .hsContent {
 	bottom: 200px;
 	top: auto;
 }
 
 /* Slide 2 */
-#slide-2 .bcg {background-image:url('../img/bcg_slide-2.jpg')}
+/*#slide-2 .bcg {background-image:url('../img/bcg_slide-2.jpg')}*/
 #slide-2 .hsContent {
 	margin-left: -450px;
 	bottom: 200px;
@@ -251,7 +267,7 @@ main {
 }
 
 /* Slide 3 */
-#slide-3 .bcg {background-image:url('../img/bcg_slide-3.jpg')}
+/*#slide-3 .bcg {background-image:url('../img/bcg_slide-3.jpg')}*/
 #slide-3 .hsContent {
 	margin-left: -239px;
 }
@@ -261,7 +277,7 @@ main {
 	}
 
 /* Slide 4 */
-#slide-4 .bcg {background-image:url('../img/bcg_slide-4.jpg')}
+/*#slide-4 .bcg {background-image:url('../img/bcg_slide-4.jpg')}*/
 #slide-4 .hsContent {
 	margin-left: -450px;
 }
