@@ -75,6 +75,7 @@
 				     }
 				   });
 				});
+		
 		//Con esta funcion hacemos que cuando pasamos de slide se muestren o no los 
 		//diferentes cuadros que poseen codigo o instrucciónes.		
 			$(function () {
@@ -82,8 +83,10 @@
 				  $('.code-text').hide();
 				  var $pos2 = 400;
 				  var $pos3 = 900;
+				  var $pos4 = 1200;
+				  var $pos5 = 1600;
 				  $window.scroll(function () {
-				     if ($window.scrollTop()>$pos2 && $window.scrollTop()<$pos3)
+				     if (($window.scrollTop()>$pos2 && $window.scrollTop()<$pos3)||($window.scrollTop()>$pos4 && $window.scrollTop()<$pos5))
 				      	$('.code-text').fadeIn();
 				     else {
 				      	$('.code-text').fadeOut();
@@ -114,8 +117,8 @@
 	    winH = $window.height();
 	    
 	    // Keep minimum height 600
-	    if(winH <= 550) {
-			winH = 550;
+	    if(winH <= 700) {
+			winH = 700;
 		} 
 	    
 	    // Resize our slides

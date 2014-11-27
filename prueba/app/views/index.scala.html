@@ -41,7 +41,12 @@
 				        	<div class="hsContainer">			        		
 				        			<img src="@routes.Assets.at("img/spark-logo.png")" class="logo">
 					    		<div class="hsContent">
-						    		<div class="instrucciones">TUTORIAL</div>
+					    			<h2>Apache Spark es un motor para el procesamiento de grandes volúmenes datos y que gracias a su llamada "interactividad" hace que el paradigma MapReduce ya no se limite a las fases Map y Reduce y podamos realizar más operaciones (mappers, reducers, joins, groups by, filtros...).
+
+									También proporciona API´s para Java,Scala & Python. Es preferible que se programe en Scala ya que el código se verá reducido y todo parecerá más limpio.
+
+									La principal ventaja de Spark es que guarda todas las operaciones sobre los datos en memoria. Esta es la clave del buen rendimiento que tiene Spark.
+						    		</h2>
 					    		</div>
 				        	</div>
 			        	</div>
@@ -51,10 +56,29 @@
 				        	<div class="hsContainer">
 				        		<div class="title-little">INSTALACIÓN</div>
 				        		<div class="code-text">
-					    			Aqui es donde ira un ejemplo de codigo...
-					    		</div>
+				        			<ul>
+				        			<li>INSTALACION OPEN JDK7 Y SCALA</li>
+									<li>apt-get install -y openjdk-7-jdk</li>
+									<li>apt-get install -y scala</li>
+									</br>
+									<li>INSTALACION SBT</li>
+									<li>wget http://repo.scala-sbt.org/scalasbt/sbt-native-packages/org/scala-sbt/sbt/0.13.0/sbt.deb --no-verbose</li>
+									<li>dpkg -i sbt.deb	</li>
+									</br>
+									<li>INSTALACION SPARK</li>
+									<li>1). Download Spark 0.9.1.</li>
+									<li>2). Unzip the binary package in any directory.</li>
+									<li>3). Go to the Spark directory.</li>
+									<li>4) Run ./sbt/sbt assembly</li>	
+									</ul>			    		
+								</div>
 					    		<div class="hsContent">
-						    		<h2>Aquí te mostramos los pasos para poder configurar apache Spark.</h2>
+						    		<h2>Para la instalación de Apache Spark necesitamos tener instalado Open JDK 7, Scala y Sbt.
+						    		</br>
+						    		Posteriormente descargaremos la ultima version de Spark y comenzaremos con la construcción de nuestra primera aplicación.
+						    		</br>
+						    		A la izquierda aparecen los comandos para realizar esta instalación en un sistema unix.
+						    		 </h2>
 					    		</div>
 				        	</div>
 			        	</div>
@@ -64,8 +88,46 @@
 				    	<div class="bcg">
 				        	<div class="hsContainer">
 				        		<div class="title-little">PRIMERA APP</div>
+					    		<div class="code-text">
+					    				1). Run mkdir SimpleSparkProject.</br>
+
+
+										2). Create a .sbt file in SimpleSparkProject/simple.sbt</br></br>
+											
+										name := "Simple Project"</br></br>
+										 
+										version := "1.0"</br></br>
+										 
+										scalaVersion := "2.10.3"</br></br>
+										 
+										libraryDependencies += "org.apache.spark" %% "spark-core" % "0.9.1"</br></br>
+										 
+										resolvers += "Akka Repository" at "http://repo.akka.io/releases/</br></br>
+
+										3). Create a file SimpleSparkProject/src/main/scala/SimpleApp.scala</br>
+
+										import org.apache.spark.SparkContext</br>
+										import org.apache.spark.SparkContext._</br></br>
+										 
+										object SimpleApp {</br>
+										 def main(args: Array[String]) {</br>
+										 val logFile = "src/data/sample.txt"</br>
+										 val sc = new SparkContext("local", "Simple App", "/path/to/spark-0.9.1-incubating",</br>
+										 List("target/scala-2.10/simple-project_2.10-1.0.jar"))</br>
+										 val logData = sc.textFile(logFile, 2).cache()</br>
+										 val numTHEs = logData.filter(line => line.contains("the")).count()</br>
+										 println("Lines with the: %s".format(numTHEs))</br>
+										 }</br>
+										}</br>
+										4). Then go to SimpleSparkProject directory.</br>
+
+										5). Run  sbt package</br>
+
+										6). Run sbt run</br>
+					    			</div>
 					    		<div class="hsContent">
-						    		<h2>Aquí te mostramos los pasos para poder configurar apache Spark.</h2>
+						    		<h2>La creación de nuestra primera aplicación, sera bastante sencilla. Comenzaremos con una aplicación que cuenta el numero de palabras en un archivo de texto. </h2>
+						    		
 					    		</div>
 				        	</div>
 			        	</div>
@@ -76,6 +138,9 @@
 					    	<div class="hsContainer">
 					    		<div class="title-little">CARGA CSV</div>
 				    			<div class="hsContent">
+				    				<div class="code-text">
+					    				Aqui es donde ira un ejemplo de codigo...
+					    			</div>
 						    		<h2>Now go and create your own story</h2>
 					    		</div>
 					    	</div>
@@ -88,7 +153,11 @@
 					    	<div class="hsContainer">
 					    		<div class="title-little">SPARK + PLAY</div>
 				    			<div class="hsContent">
+				    				<div class="code-text">
+					    				Aqui es donde ira un ejemplo de codigo...
+					    			</div>
 						    		<h2>and share mine.</h2>
+						    		
 					    		</div>
 					    	</div>
 					    	
