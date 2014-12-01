@@ -1,10 +1,14 @@
-@(message: String, columna1: String)
+@(message: Array[String], columna1: Array[String])
 
 @main("Welcome to Spark") {
 	<select>
-		  <option value='0'>@columna1</option>
-
+		@for(columna1 <- columna1){
+		  <option>@columna1</option>	
+		  }  
 	</select>
-    @message
+    
+    @for(message <- message) {
+		<dt>@message</dt>
+		}
 
 }

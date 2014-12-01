@@ -42,8 +42,8 @@ object Application extends Controller {
          })
        })
 
-	val x = z.collect.mkString(" <br> ")
-  val p = l.collect.mkString(" </option><option value=''> ")
+	val x = z.collect
+  val p = l.collect
 
 	
 
