@@ -20,8 +20,8 @@ object Application extends Controller {
 		 val sc = new SparkContext("local", "Simple App", "/home/eruizgar/play-2.2.2/tfg/app",
 		 List("target/scala-2.10/tfg_2.10-1.0-SNAPSHOT.jar"))
 
-		 val data = sc.textFile("carga.csv")
-
+		 //val data = sc.textFile("carga.csv")
+     val data = sc.textFile("gasolineras-ca-ceres-csv.csv")
 	
 		
 	val z = data.mapPartitions(lines => {
