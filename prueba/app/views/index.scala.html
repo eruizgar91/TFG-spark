@@ -13,6 +13,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/normalize.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/styles/monokai.css")">
         <script src="@routes.Assets.at("javascripts/vendor/modernizr-2.7.1.min.js")" type="text/javascript"></script>
      
     </head>
@@ -55,30 +56,30 @@
 			        	<div class="bcg">
 				        	<div class="hsContainer">
 				        		<div class="title-little">INSTALACIÓN</div>
-				        		<div class="code-text">
-				        			<ul>
-				        			<li>INSTALACION OPEN JDK7 Y SCALA</li>
-									<li>apt-get install -y openjdk-7-jdk</li>
-									<li>apt-get install -y scala</li>
-									</br>
-									<li>INSTALACION SBT</li>
-									<li>wget http://repo.scala-sbt.org/scalasbt/sbt-native-packages/org/scala-sbt/sbt/0.13.0/sbt.deb --no-verbose</li>
-									<li>dpkg -i sbt.deb	</li>
-									</br>
-									<li>INSTALACION SPARK</li>
-									<li>1). Download Spark 0.9.1.</li>
-									<li>2). Unzip the binary package in any directory.</li>
-									<li>3). Go to the Spark directory.</li>
-									<li>4) Run ./sbt/sbt assembly</li>	
-									</ul>			    		
-								</div>
 					    		<div class="hsContent">
-						    		<h2>Para la instalación de Apache Spark necesitamos tener instalado Open JDK 7, Scala y Sbt.
-						    		</br>
-						    		Posteriormente descargaremos la ultima version de Spark y comenzaremos con la construcción de nuestra primera aplicación.
-						    		</br>
-						    		A la izquierda aparecen los comandos para realizar esta instalación en un sistema unix.
-						    		 </h2>
+							    	<h2>Para la instalación de Apache Spark necesitamos tener instalado Open JDK 7, Scala y Sbt. Para ello introduciremos los siguientes comandos:
+							    	<div class="command-text">
+							    		<ul>
+							    			<li>sudo apt-get install openjdk-7-jdk</li>
+							    			<li>sudo apt-get install scala</li>
+							    		</ul>
+							    	</div>							    		
+							    		Sbt es una herramienta de software para la gestión y construcción de proyectos en Scala similar a Maven o Ant. Para su instalación lo descargaremos e instalaremos introduciendo:
+							    	<div class="command-text">
+							    		<ul>
+								    		<li>wget http://repo.scala-sbt.org/scalasbt/sbt-native-packages/org/scala-sbt/sbt/0.13.0/sbt.deb --no-verbose</li>
+								    		<li>dpkg -i sbt.deb</li>
+								    	</ul>
+							    	</div>							    		
+							    		Posteriormente descargaremos la última version de <a href="https://spark.apache.org/downloads.html">Spark</a> y comenzaremos con la construcción de nuestra primera aplicación.
+							    	<div class="command-text">
+							    		<ul>
+											<li>Descomprimimos el zip en cualquier directorio.</li>
+											<li>Vamos al directorio de Spark</li>
+											<li>Ejecutamos ./sbt/sbt assembly</li>	
+										</ul>	
+									</div>
+							    	</h2>
 					    		</div>
 				        	</div>
 			        	</div>
@@ -89,10 +90,9 @@
 				        	<div class="hsContainer">
 				        		<div class="title-little">PRIMERA APP</div>
 					    		<div class="code-text">
-					    				1). Run mkdir SimpleSparkProject.</br>
+					    		<pre><code class="scala">
 
-
-										2). Create a .sbt file in SimpleSparkProject/simple.sbt</br></br>
+										<b>simple.sbt</b></br></br>
 											
 										name := "Simple Project"</br></br>
 										 
@@ -102,31 +102,42 @@
 										 
 										libraryDependencies += "org.apache.spark" %% "spark-core" % "0.9.1"</br></br>
 										 
-										resolvers += "Akka Repository" at "http://repo.akka.io/releases/</br></br>
+										resolvers += "Akka Repository" at "http://repo.akka.io/releases/</br></br></br></br>
+									</code></pre><pre><code class="scala">	
+										<b>SimpleApp.scala</b></br></br>
 
-										3). Create a file SimpleSparkProject/src/main/scala/SimpleApp.scala</br>
 
 										import org.apache.spark.SparkContext</br>
 										import org.apache.spark.SparkContext._</br></br>
 										 
 										object SimpleApp {</br>
 										 def main(args: Array[String]) {</br>
-										 val logFile = "src/data/sample.txt"</br>
-										 val sc = new SparkContext("local", "Simple App", "/path/to/spark-0.9.1-incubating",</br>
-										 List("target/scala-2.10/simple-project_2.10-1.0.jar"))</br>
+ 											val logFile = "src/main/sample.txt"</br>
+ 											val sc = new SparkContext("local", "Simple App", "/home/eruizgar/Descargas/spark-1.0.0",</br>
+ 											List("target/scala-2.10/simple-project_2.10-1.0.jar"))</br>
 										 val logData = sc.textFile(logFile, 2).cache()</br>
+										 //Sacamos por pantalla el numero de the</br>
 										 val numTHEs = logData.filter(line => line.contains("the")).count()</br>
 										 println("Lines with the: %s".format(numTHEs))</br>
 										 }</br>
 										}</br>
-										4). Then go to SimpleSparkProject directory.</br>
-
-										5). Run  sbt package</br>
-
-										6). Run sbt run</br>
-					    			</div>
+					    			</code></pre></div>
 					    		<div class="hsContent">
-						    		<h2>La creación de nuestra primera aplicación, sera bastante sencilla. Comenzaremos con una aplicación que cuenta el numero de palabras en un archivo de texto. </h2>
+						    		<h2>La creación de nuestra primera aplicación, sera bastante sencilla. Comenzaremos con una aplicación que cuenta el numero de veces que aparece una palabra en un archivo de texto.
+						    		En primer lugar crearemos una carpeta que albergará nuestro proyecto. Después crearemos un archivo sbt con la definiciones necesarias para la construcción de nuestro proyecto.
+						    		<div class="command-text">
+							    		<ul>
+								    		<li>Run mkdir SimpleSparkProject.</li>
+								    	</ul>
+							    	</div>
+							    	Crearemos un fichero en SimpleSparkProject/src/main/scala/SimpleApp.scala con el codigo que se muestra a la izquierda. Por último volveremos al directorio superior y ejecutaremos:
+							    	<div class="command-text">
+							    		<ul>
+								    		<li>Run  sbt package</li>
+								    		<li>Run sbt run</li>
+								    	</ul>
+							    	</div>
+						    		 </h2>
 						    		
 					    		</div>
 				        	</div>
@@ -138,11 +149,34 @@
 					    	<div class="hsContainer">
 					    		<div class="title-little">CARGA CSV</div>
 				    			<div class="hsContent">
-				    				<div class="code-text">
-					    				Aqui es donde ira un ejemplo de codigo...
-					    			</div>
-						    		<h2>Now go and create your own story</h2>
+						    		<h2>Ahora veremos un ejemplo de codigo que carga un archivo de datos en formato .csv y nos devuelve las columnas seleccionadas ordenadas alfabeticamente. Aquí podemos ver la facilidad con que Apache Spark maneja los archivos de datos, y el poco codigo que se utiliza para ello.</h2>
 					    		</div>
+					    		<div class="code-text1">
+					    		<pre><code class="scala">
+					    				import org.apache.spark.SparkContext</br>
+										import org.apache.spark.SparkContext._</br>
+
+										import au.com.bytecode.opencsv.CSVParser</br>
+										import org.apache.spark.rdd.RDD</br>
+
+										import scala.Tuple2;</br></br>
+										 
+										object SimpleApp {</br>
+										 def main(args: Array[String]) {</br>
+										 	 val sc = new SparkContext("local", "cargaCSV", "/home/eruizgar/Descargas/spark-1.0.0",</br>
+										 			List("target/scala-2.10/simple-project_2.10-1.0.jar"))</br>
+										 			val data =sc.textFile("src/main/gasolineras-ca-ceres-csv.csv")</br>
+										 				data.mapPartitions(lines => {</br>
+										         val parser=new CSVParser(',')</br>
+										         lines.map(line => {</br>
+										           val columns = parser.parseLine(line)</br>
+										           
+										           Array(columns(2),columns(4)).mkString(",")</br>
+										         })
+										       }).countByValue().toList.sorted.foreach(println)	</br>
+											 }</br>
+										}
+					    		</code></pre></div>
 					    	</div>
 					    	
 					    </div>
@@ -183,6 +217,8 @@
         <script src="@routes.Assets.at("javascripts/imagesloaded.js")" type="text/javascript"></script>
         <script src="@routes.Assets.at("javascripts/skrollr.js")" type="text/javascript"></script>
         <script src="@routes.Assets.at("javascripts/_main.js")" type="text/javascript"></script>
+		<script src="@routes.Assets.at("javascripts/highlight.pack.js")" type="text/javascript"></script>	
+		<script>hljs.initHighlightingOnLoad();</script>
 
 
     </body>

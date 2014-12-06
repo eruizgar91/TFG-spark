@@ -198,7 +198,7 @@ mark {
 
 p,
 pre {
-    margin:  0;
+    margin: 1em 0;
 }
 
 /**

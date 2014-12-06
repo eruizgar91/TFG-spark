@@ -81,17 +81,26 @@
 			$(function () {
 				  
 				  $('.code-text').hide();
-				  var $pos2 = 400;
-				  var $pos3 = 900;
-				  var $pos4 = 1200;
-				  var $pos5 = 1600;
+				  $('.code-text1').hide();
+				  var $pos2 = 1400;
+				  var $pos3 = 1900;
+				  var $pos4 = 2100;
+				  var $pos5 = 2700;
 				  $window.scroll(function () {
-				     if (($window.scrollTop()>$pos2 && $window.scrollTop()<$pos3)||($window.scrollTop()>$pos4 && $window.scrollTop()<$pos5))
+				     if (($window.scrollTop()>$pos2 && $window.scrollTop()<$pos3))
 				      	$('.code-text').fadeIn();
 				     else {
 				      	$('.code-text').fadeOut();
 				     }
 				   });
+				   $window.scroll(function () {
+				     if (($window.scrollTop()>$pos4 && $window.scrollTop()<$pos5))
+				      	$('.code-text1').fadeIn();
+				     else {
+				      	$('.code-text1').fadeOut();
+				     }
+				   });
+			
 				});
 
     //FadeIn all sections   
@@ -117,8 +126,8 @@
 	    winH = $window.height();
 	    
 	    // Keep minimum height 600
-	    if(winH <= 700) {
-			winH = 700;
+	    if(winH <= 750) {
+			winH = 750;
 		} 
 	    
 	    // Resize our slides
