@@ -186,11 +186,35 @@
 						<div class="bcg">
 					    	<div class="hsContainer">
 					    		<div class="title-little">SPARK + PLAY</div>
+					    		<div class="code-text2">
+					    		<pre><code class="scala">
+										  <b>build.sbt</b></br>
+										  libraryDependencies ++= Seq(</br>
+					    				  "org.apache.spark" %% "spark-core" % "1.0.0",</br>
+										  "com.typesafe.akka" %% "akka-actor" % "2.2.3",</br>
+										  "com.typesafe.akka" %% "akka-slf4j" % "2.2.3"</br>
+										  )</br>
+									</code></pre</div>
 				    			<div class="hsContent">
-				    				<div class="code-text">
-					    				Aqui es donde ira un ejemplo de codigo...
-					    			</div>
-						    		<h2>and share mine.</h2>
+						    		<h2>
+						    			Ahora veremos como integrar Apache Spark con Play Framework para crear una aplicación. En primer lugar creamos la aplicación con la siguiente orden:
+					    				<div class="command-text">
+					    				<ul>
+					    					<li>
+					    						play new PlaySparkApp
+					    					</li>
+					    				</ul>
+					    				</div>
+					    				En segundo lugar añadieromos al archivo build.sbt las dependencias necesarias para que podamos utilizar Spark.
+										Ahora pasaremos a crear la aplicación de Spark escribiendo el codigo en Application.scala como se muestra en el ejemplo de la izquierda.
+										Por último compilaremos y lanzaremos nuestra aplicación la cual podremos ver <a href="http://localhost:9000/">localhost:9000</a>.
+										<div class="command-text">
+											<ul>
+								    			<li>play clean compile dist</li>
+								    			<li>play run</li>
+								    		</ul>				    				
+										</div>
+					    			</h2>
 						    		
 					    		</div>
 					    	</div>
