@@ -89,7 +89,7 @@
 				  var pos4 = $('#slide-5').position();
 				 
 				  $window.scroll(function () {
-				     if (($window.scrollTop()>pos2.top && $window.scrollTop()<pos3.top)){
+				     if (($window.scrollTop()>pos2.top && $window.scrollTop()<pos2.top + 1500)){
 				     	
 				      	$('.code-text').fadeIn();
 				      }
@@ -98,14 +98,14 @@
 				     }
 				   });
 				   $window.scroll(function () {
-				     if (($window.scrollTop()>pos3.top && $window.scrollTop()<pos4.top))
+				     if (($window.scrollTop()>pos3.top && $window.scrollTop()<pos3.top + 1500))
 				      	$('.code-text1').fadeIn();
 				     else {
 				      	$('.code-text1').fadeOut();
 				     }
 				   });
 				    $window.scroll(function () {
-				     if (($window.scrollTop()>pos4.top && $window.scrollTop()<pos4.top + 1000))
+				     if (($window.scrollTop()>pos4.top && $window.scrollTop()<pos4.top + 1500))
 				      	$('.code-text2').fadeIn();
 				     else {
 				      	$('.code-text2').fadeOut();
