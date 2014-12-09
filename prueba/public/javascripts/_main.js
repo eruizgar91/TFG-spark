@@ -80,30 +80,32 @@
 		//diferentes cuadros que poseen codigo o instrucciónes.		
 			$(function () {
 				  
-				  $('.code-text').hide();
-				  $('.code-text1').hide();
-				  var $pos2 = 1400;
-				  var $pos3 = 1900;
-				  var $pos4 = 2100;
-				  var $pos5 = 2700;
-				  var $pos6 = 2900;
-				  var $pos7 = 3500;
+				  //$('.code-text').hide();
+				  //$('.code-text1').hide();
+				  //$('.code-text2').hide();
+				  
+				  var pos2 = $('#slide-3').position();
+				  var pos3 = $('#slide-4').position();
+				  var pos4 = $('#slide-5').position();
+				 
 				  $window.scroll(function () {
-				     if (($window.scrollTop()>$pos2 && $window.scrollTop()<$pos3))
+				     if (($window.scrollTop()>pos2.top && $window.scrollTop()<pos3.top)){
+				     	
 				      	$('.code-text').fadeIn();
+				      }
 				     else {
 				      	$('.code-text').fadeOut();
 				     }
 				   });
 				   $window.scroll(function () {
-				     if (($window.scrollTop()>$pos4 && $window.scrollTop()<$pos5))
+				     if (($window.scrollTop()>pos3.top && $window.scrollTop()<pos4.top))
 				      	$('.code-text1').fadeIn();
 				     else {
 				      	$('.code-text1').fadeOut();
 				     }
 				   });
 				    $window.scroll(function () {
-				     if (($window.scrollTop()>$pos6 && $window.scrollTop()<$pos7))
+				     if (($window.scrollTop()>pos4.top && $window.scrollTop()<pos4.top + 1000))
 				      	$('.code-text2').fadeIn();
 				     else {
 				      	$('.code-text2').fadeOut();
