@@ -194,7 +194,35 @@
 										  "com.typesafe.akka" %% "akka-actor" % "2.2.3",</br>
 										  "com.typesafe.akka" %% "akka-slf4j" % "2.2.3"</br>
 										  )</br>
-									</code></pre</div>
+									</code></pre>
+									<pre><code class="scala">
+									<b>Aplication.scala</b></br>
+									import org.apache.spark.SparkContext</br>
+									import org.apache.spark.SparkContext._</br>
+									import org.apache.spark.SparkConf</br>
+									import au.com.bytecode.opencsv.CSVParser</br>
+									import org.apache.spark.rdd.RDD</br>
+									import scala.Tuple2;</br>
+									object Application extends Controller {</br>
+  									def index = Action {</br>
+		 									val sc = new SparkContext("local", "Simple App", "/home/eruizgar/play-2.2.2/tfg/app",</br>
+		 									List("target/scala-2.10/tfg_2.10-1.0-SNAPSHOT.jar"))</br>
+		 									 val data = sc.textFile("gasolineras-ca-ceres-csv.csv")</br>
+		 									 val l = data.mapPartitions(lines => {</br>
+  									         val parser = new CSVParser(',')</br>
+  									         lines.map(line => {</br>
+  									           val columns = parser.parseLine(line)</br>
+  									           
+  									           Array(columns(0)).mkString(",")</br>
+  									         })</br>
+  									       })</br>
+  									       val p = l.collect</br>
+  									        Ok(views.html.index(p))</br>
+  									        }</br>
+  									        }</br>
+
+									</code></pre>
+									</div>
 				    			<div class="hsContent">
 						    		<h2>
 						    			Ahora veremos como integrar Apache Spark con Play Framework para crear una aplicación. En primer lugar creamos la aplicación con la siguiente orden:
@@ -224,9 +252,14 @@
 					<section id="slide-5" class="homeSlide">
 						<div class="bcg">
 					    	<div class="hsContainer">
-					    		<div class="title-little">CONTACTA</div>
+					    		<div class="title-little">DOCUMENTACIÓN</div>
 				    			<div class="hsContent">
-						    		<h2>Aquí puedes encontrar más información sobre el creador de esta web.</h2>
+						    		<h2>En estos enlaces puedes encontrar información que te puede resultar de interés para profundizar en el conocimiento de estas herramientas:</br></br>
+
+						    		<img src="@routes.Assets.at("img/spark-logo.png")" class="log"><a href="http://spark.apache.org/documentation.html">Apache Spark</a></br></br>
+						    		<img src="@routes.Assets.at("img/play_full_color.png")" class="log"><a href="https://www.playframework.com/documentation/2.3.x/Home">Play framework</a></br></br>
+						    		<img src="@routes.Assets.at("img/scala-logo-red-footer.png")" class="log"><a href="http://www.scala-lang.org/documentation/">Scala</a></br>
+						    		</h2>
 					    		</div>
 					    	</div>
 					    	

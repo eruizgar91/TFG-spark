@@ -78,7 +78,7 @@ body {
     border-width: 5px;
     border-style: solid;
     border-radius: 5px;
-    margin-left: 3%;
+    margin-left: 52%;
     width: 40%;
  
 
@@ -152,8 +152,10 @@ hr {
    margin-left: 15%;
    margin-top: 15%;
    position: relative;
-   
- 
+}
+.log {
+    height: auto;
+    width: 25%;
 }
 img {
     vertical-align: middle;
@@ -323,6 +325,8 @@ main {
 #slide-3 .hsContent {
     bottom: 200px;
     top: 23%;
+    left: 3%;
+    width: 47%;
 }
 
 
@@ -335,7 +339,9 @@ main {
 /* Slide 5 */
 #slide-5 .hsContent {
     bottom: 200px;
-    top: auto;
+    top: 20%;
+     left: 15%;
+    width: 85%;
     
 }
 /* ==========================================================================

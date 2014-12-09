@@ -86,6 +86,8 @@
 				  var $pos3 = 1900;
 				  var $pos4 = 2100;
 				  var $pos5 = 2700;
+				  var $pos6 = 2900;
+				  var $pos7 = 3500;
 				  $window.scroll(function () {
 				     if (($window.scrollTop()>$pos2 && $window.scrollTop()<$pos3))
 				      	$('.code-text').fadeIn();
@@ -98,6 +100,13 @@
 				      	$('.code-text1').fadeIn();
 				     else {
 				      	$('.code-text1').fadeOut();
+				     }
+				   });
+				    $window.scroll(function () {
+				     if (($window.scrollTop()>$pos6 && $window.scrollTop()<$pos7))
+				      	$('.code-text2').fadeIn();
+				     else {
+				      	$('.code-text2').fadeOut();
 				     }
 				   });
 			
