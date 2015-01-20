@@ -1,14 +1,19 @@
-@(message: Array[String], columna1: Array[String])
+@(message: Array[String], columna1: Array[String], prueba: Array[(String, String, String, String, String, String)])
 
 @main("Welcome to Spark") {
-	<select>
-		@for(columna1 <- columna1){
-		  <option>@columna1</option>	
-		  }  
-	</select>
+	<form method="post">
+
+				@for(columna1 <- columna1){
+				  <input type="radio" name="opcion" value="@columna1">@columna1</br>
+				  }  
+		 	
+		 	<input type="submit">
+    </form>
     
+
+   
     @for(message <- message) {
 		<dt>@message</dt>
 		}
-
+	@prueba
 }

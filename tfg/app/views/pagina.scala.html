@@ -1,0 +1,113 @@
+@(longitud:String, latitud: String)
+
+@main("Mapita") {
+	La longitud @longitud y la latitud @latitud.
+
+	<html>
+<head>
+<title>Aplicacion de geolocalizacion</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<!-- Vista por defecto -->
+
+    <style type="text/css">
+        html, body {
+        width: 100%;
+        height: 100%;
+        background-color: #DDC759;
+        }
+
+    #map_canvas {
+        height: 85%;
+        width: 100%;
+    }
+    #Titulo {
+       
+        margin: auto;
+        padding: 0;
+        text-align: center;
+        background-color: #DDC777
+
+    }
+    
+    </style>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+<script type="text/javascript">
+// Determine support for Geolocation
+if (navigator.geolocation) {
+    // Locate position
+    navigator.geolocation.getCurrentPosition(displayPosition, errorFunction);
+} else {
+    alert('It seems like Geolocation, which is required for this page, is not enabled in your browser. Please use a browser which supports it.');
+}
+
+// Success callback function
+function displayPosition(pos) {
+    var mylat = @latitud.replaceAll("\"", "");
+    console.log(mylat);
+    var mylong = @longitud.replaceAll("\"", "");
+    
+    var thediv = document.getElementById('locationinfo');
+    thediv.innerHTML = '<p>La longitud actual es:' +
+        mylong + ' la latitud actual ' + mylat + '<br>' + '</p>';
+ 
+//Load Google Map
+var latlng = new google.maps.LatLng(mylat, mylong);
+console.log("LatLng" + latlng);
+  
+   var myOptions = {
+      zoom: 10,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+   
+var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+//Add marker
+var marker = new google.maps.Marker({
+	     position: latlng, 
+	     map: map, 
+	     title:"You are here"
+	 });
+   
+
+$(function(){$("#milon").val(mylong);});
+$(function(){$("#milat").val(mylat);});
+
+}
+
+function errorFunction(pos) {
+    alert('Error!');
+}
+</script>
+
+</head>
+
+<body>
+    <div id="Titulo">
+        <p>La pagina contiene un video y una aplicación que nos muestra en Google maps 
+        nuestra posición actual y nuestra posición anterior. 
+    </p>
+</div>
+
+    <h3> Mapa </h3>
+
+    <div id="map_canvas"></div>
+ 	
+ 	<div id="Coordenadas">
+		<div id="locationinfo"></div>
+ 	 <form>
+    Longitud1:<input type="text" id="milon" name="name4"  >
+    <br>
+    Latitud1:<input type="text" id="milat" name="name3"  >
+    <br>
+ 	 </form>
+	</div>
+	
+</body>
+</html>
+
+}
