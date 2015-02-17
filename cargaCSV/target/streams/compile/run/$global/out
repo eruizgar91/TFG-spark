@@ -2,7 +2,7 @@
 [0m[[0mdebug[0m] [0mStarting sandboxed run...[0m
 [0m[[0mdebug[0m] [0mWaiting for threads to exit or System.exit to be called.[0m
 [0m[[0mdebug[0m] [0m  Classpath:[0m
-[0m[[0mdebug[0m] [0m	/home/eruizgar/cargaCSV/target/scala-2.10/classes[0m
+[0m[[0mdebug[0m] [0m	/home/eruizgar/TFG-spark/cargaCSV/target/scala-2.10/classes[0m
 [0m[[0mdebug[0m] [0m	/home/eruizgar/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.10.4.jar[0m
 [0m[[0mdebug[0m] [0m	/home/eruizgar/.ivy2/cache/org.apache.spark/spark-core_2.10/jars/spark-core_2.10-1.0.0.jar[0m
 [0m[[0mdebug[0m] [0m	/home/eruizgar/.ivy2/cache/org.apache.hadoop/hadoop-client/jars/hadoop-client-1.0.4.jar[0m

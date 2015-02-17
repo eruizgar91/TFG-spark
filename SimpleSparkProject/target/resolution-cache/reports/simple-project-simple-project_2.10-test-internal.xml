@@ -7,8 +7,32 @@
 		revision="1.0"
 		conf="test-internal"
 		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool"
-		date="20141021003132"/>
+		date="20150217200800"/>
 	<dependencies>
+		<module organisation="org.twitter4j" name="twitter4j-stream">
+			<revision name="3.0.3" status="release" pubdate="20121223131417" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://twitter4j.org/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="89">
+				<license name="Apache License 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="no" details="" size="3418" time="0" location="/home/eruizgar/.ivy2/cache/org.twitter4j/twitter4j-stream/ivy-3.0.3.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/twitter4j/twitter4j-stream/3.0.3/twitter4j-stream-3.0.3.pom"/>
+				<caller organisation="simple-project" name="simple-project_2.10" conf="test-internal, test, optional, compile, provided, runtime" rev="3.0.3" rev-constraint-default="3.0.3" rev-constraint-dynamic="3.0.3" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="twitter4j-stream" type="jar" ext="jar" status="no" details="" size="56307" time="0" location="/home/eruizgar/.ivy2/cache/org.twitter4j/twitter4j-stream/jars/twitter4j-stream-3.0.3.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/twitter4j/twitter4j-stream/3.0.3/twitter4j-stream-3.0.3.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.twitter4j" name="twitter4j-core">
+			<revision name="3.0.3" status="release" pubdate="20121223131256" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://twitter4j.org/" downloaded="false" searched="false" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="90">
+				<license name="Apache License 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="no" details="" size="3561" time="0" location="/home/eruizgar/.ivy2/cache/org.twitter4j/twitter4j-core/ivy-3.0.3.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/twitter4j/twitter4j-core/3.0.3/twitter4j-core-3.0.3.pom"/>
+				<caller organisation="org.twitter4j" name="twitter4j-stream" conf="default, compile, runtime, master" rev="3.0.3" rev-constraint-default="3.0.3" rev-constraint-dynamic="3.0.3" callerrev="3.0.3"/>
+				<artifacts>
+					<artifact name="twitter4j-core" type="jar" ext="jar" status="no" details="" size="284077" time="0" location="/home/eruizgar/.ivy2/cache/org.twitter4j/twitter4j-core/jars/twitter4j-core-3.0.3.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/twitter4j/twitter4j-core/3.0.3/twitter4j-core-3.0.3.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
 		<module organisation="org.scala-lang" name="scalap">
 			<revision name="2.10.4" status="release" pubdate="20140318224827" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" downloaded="false" searched="false" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="66">
 				<license name="BSD-like" url="http://www.scala-lang.org/downloads/license.html    "/>
