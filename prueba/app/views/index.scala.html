@@ -1,0 +1,282 @@
+@(message: String)
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tutorial</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/normalize.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/styles/monokai.css")">
+        <script src="@routes.Assets.at("javascripts/vendor/modernizr-2.7.1.min.js")" type="text/javascript"></script>
+     
+    </head>
+    	  
+    <body class="loading">
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+ 		
+ 		<nav id="header">
+				<ul>
+					<img src="@routes.Assets.at("img/spark-logo.png")" class="logopeque">
+					<div class="elemento-nav"><a href="#slide-0">Inicio</div>
+					<div class="elemento-nav"><a href="#slide-1">Instalación</a></div>
+					<div class="elemento-nav"><a href="#slide-2">Primera app</a></div>
+					<div class="elemento-nav"><a href="#slide-3">Carga de csv</a></div>
+					<div class="elemento-nav"><a href="#slide-4">Spark+play</a></div>
+					<div class="elemento-nav"><a href="#slide-5">Documentación</a></div>
+
+				</ul>
+			</nav>
+       	
+		<main>
+		     		<section id="slide-0" class="homeSlide">
+			        	<div class="bcg">
+				        	<div class="hsContainer">			        		
+				        			<img src="@routes.Assets.at("img/spark-logo.png")" class="logo">
+					    		<div class="hsContent">
+					    			<h2>Apache Spark es un motor para el procesamiento de grandes volúmenes datos y que gracias a su llamada "interactividad" hace que el paradigma MapReduce ya no se limite a las fases Map y Reduce y podamos realizar más operaciones (mappers, reducers, joins, groups by, filtros...).
+
+									También proporciona API´s para Java,Scala & Python. Es preferible que se programe en Scala ya que el código se verá reducido y todo parecerá más limpio.
+
+									La principal ventaja de Spark es que guarda todas las operaciones sobre los datos en memoria. Esta es la clave del buen rendimiento que tiene Spark.
+						    		</h2>
+					    		</div>
+				        	</div>
+			        	</div>
+				    </section>
+			        <section id="slide-1" class="homeSlide">
+			        	<div class="bcg">
+				        	<div class="hsContainer">
+				        		<div class="title-little">INSTALACIÓN</div>
+					    		<div class="hsContent">
+							    	<h2>Para la instalación de Apache Spark necesitamos tener instalado Open JDK 7, Scala y Sbt. Para ello introduciremos los siguientes comandos:
+							    	<div class="command-text">
+							    		<ul>
+							    			<li>sudo apt-get install openjdk-7-jdk</li>
+							    			<li>sudo apt-get install scala</li>
+							    		</ul>
+							    	</div>							    		
+							    		Sbt es una herramienta de software para la gestión y construcción de proyectos en Scala similar a Maven o Ant. Para su instalación lo descargaremos e instalaremos introduciendo:
+							    	<div class="command-text">
+							    		<ul>
+								    		<li>wget http://repo.scala-sbt.org/scalasbt/sbt-native-packages/org/scala-sbt/sbt/0.13.0/sbt.deb --no-verbose</li>
+								    		<li>dpkg -i sbt.deb</li>
+								    	</ul>
+							    	</div>							    		
+							    		Posteriormente descargaremos la última version de <a href="https://spark.apache.org/downloads.html">Spark</a> y comenzaremos con la construcción de nuestra primera aplicación.
+							    	<div class="command-text">
+							    		<ul>
+											<li>Descomprimimos el zip en cualquier directorio.</li>
+											<li>Vamos al directorio de Spark</li>
+											<li>Ejecutamos ./sbt/sbt assembly</li>	
+										</ul>	
+									</div>
+							    	</h2>
+					    		</div>
+				        	</div>
+			        	</div>
+				    </section>
+				    
+				    <section id="slide-2" name="slide-2" class="homeSlide">
+				    	<div class="bcg">
+				        	<div class="hsContainer">
+				        		<div class="title-little">PRIMERA APP</div>
+					    		<div class="code-text">
+					    		<pre><code class="scala">
+
+										<b>simple.sbt</b></br></br>
+											
+										name := "Simple Project"</br></br>
+										 
+										version := "1.0"</br></br>
+										 
+										scalaVersion := "2.10.3"</br></br>
+										 
+										libraryDependencies += "org.apache.spark" %% "spark-core" % "0.9.1"</br></br>
+										 
+										resolvers += "Akka Repository" at "http://repo.akka.io/releases/</br></br></br></br>
+									</code></pre><pre><code class="scala">	
+										<b>SimpleApp.scala</b></br></br>
+
+
+										import org.apache.spark.SparkContext</br>
+										import org.apache.spark.SparkContext._</br></br>
+										 
+										object SimpleApp {</br>
+										 def main(args: Array[String]) {</br>
+ 											val logFile = "src/main/sample.txt"</br>
+ 											val sc = new SparkContext("local", "Simple App", "/home/eruizgar/Descargas/spark-1.0.0",</br>
+ 											List("target/scala-2.10/simple-project_2.10-1.0.jar"))</br>
+										 val logData = sc.textFile(logFile, 2).cache()</br>
+										 //Sacamos por pantalla el numero de the</br>
+										 val numTHEs = logData.filter(line => line.contains("the")).count()</br>
+										 println("Lines with the: %s".format(numTHEs))</br>
+										 }</br>
+										}</br>
+					    			</code></pre></div>
+					    		<div class="hsContent">
+						    		<h2>La creación de nuestra primera aplicación, sera bastante sencilla. Comenzaremos con una aplicación que cuenta el numero de veces que aparece una palabra en un archivo de texto.
+						    		En primer lugar crearemos una carpeta que albergará nuestro proyecto. Después crearemos un archivo sbt con la definiciones necesarias para la construcción de nuestro proyecto.
+						    		<div class="command-text">
+							    		<ul>
+								    		<li>Run mkdir SimpleSparkProject.</li>
+								    	</ul>
+							    	</div>
+							    	Crearemos un fichero en SimpleSparkProject/src/main/scala/SimpleApp.scala con el codigo que se muestra a la izquierda. Por último volveremos al directorio superior y ejecutaremos:
+							    	<div class="command-text">
+							    		<ul>
+								    		<li>Run  sbt package</li>
+								    		<li>Run sbt run</li>
+								    	</ul>
+							    	</div>
+						    		 </h2>
+						    		
+					    		</div>
+				        	</div>
+			        	</div>
+				    </section>
+				    
+					<section id="slide-3" class="homeSlide">
+						<div class="bcg">
+					    	<div class="hsContainer">
+					    		<div class="title-little">CARGA CSV</div>
+				    			<div class="hsContent">
+						    		<h2>Ahora veremos un ejemplo de codigo que carga un archivo de datos en formato .csv y nos devuelve las columnas seleccionadas ordenadas alfabeticamente. Aquí podemos ver la facilidad con que Apache Spark maneja los archivos de datos, y el poco codigo que se utiliza para ello.</h2>
+					    		</div>
+					    		<div class="code-text1">
+					    		<pre><code class="scala">
+					    				import org.apache.spark.SparkContext</br>
+										import org.apache.spark.SparkContext._</br>
+
+										import au.com.bytecode.opencsv.CSVParser</br>
+										import org.apache.spark.rdd.RDD</br>
+
+										import scala.Tuple2;</br></br>
+										 
+										object SimpleApp {</br>
+										 def main(args: Array[String]) {</br>
+										 	 val sc = new SparkContext("local", "cargaCSV", "/home/eruizgar/Descargas/spark-1.0.0",</br>
+										 			List("target/scala-2.10/simple-project_2.10-1.0.jar"))</br>
+										 			val data =sc.textFile("src/main/gasolineras-ca-ceres-csv.csv")</br>
+										 				data.mapPartitions(lines => {</br>
+										         val parser=new CSVParser(',')</br>
+										         lines.map(line => {</br>
+										           val columns = parser.parseLine(line)</br>
+										           
+										           Array(columns(2),columns(4)).mkString(",")</br>
+										         })
+										       }).countByValue().toList.sorted.foreach(println)	</br>
+											 }</br>
+										}
+					    		</code></pre></div>
+					    	</div>
+					    	
+					    </div>
+					</section>
+					
+					<section id="slide-4" class="homeSlide">
+						<div class="bcg">
+					    	<div class="hsContainer">
+					    		<div class="title-little">SPARK + PLAY</div>
+					    		<div class="code-text2">
+					    		<pre><code class="scala">
+										  <b>build.sbt</b></br>
+										  libraryDependencies ++= Seq(</br>
+					    				  "org.apache.spark" %% "spark-core" % "1.0.0",</br>
+										  "com.typesafe.akka" %% "akka-actor" % "2.2.3",</br>
+										  "com.typesafe.akka" %% "akka-slf4j" % "2.2.3"</br>
+										  )</br>
+									</code></pre>
+									<pre><code class="scala">
+									<b>Aplication.scala</b></br>
+									import org.apache.spark.SparkContext</br>
+									import org.apache.spark.SparkContext._</br>
+									import org.apache.spark.SparkConf</br>
+									import au.com.bytecode.opencsv.CSVParser</br>
+									import org.apache.spark.rdd.RDD</br>
+									import scala.Tuple2;</br>
+									object Application extends Controller {</br>
+  									def index = Action {</br>
+		 									val sc = new SparkContext("local", "Simple App", "/home/eruizgar/play-2.2.2/tfg/app",</br>
+		 									List("target/scala-2.10/tfg_2.10-1.0-SNAPSHOT.jar"))</br>
+		 									 val data = sc.textFile("gasolineras-ca-ceres-csv.csv")</br>
+		 									 val l = data.mapPartitions(lines => {</br>
+  									         val parser = new CSVParser(',')</br>
+  									         lines.map(line => {</br>
+  									           val columns = parser.parseLine(line)</br>
+  									           
+  									           Array(columns(0)).mkString(",")</br>
+  									         })</br>
+  									       })</br>
+  									       val p = l.collect</br>
+  									        Ok(views.html.index(p))</br>
+  									        }</br>
+  									        }</br>
+
+									</code></pre>
+									</div>
+				    			<div class="hsContent">
+						    		<h2>
+						    			Ahora veremos como integrar Apache Spark con Play Framework para crear una aplicación. En primer lugar creamos la aplicación con la siguiente orden:
+					    				<div class="command-text">
+					    				<ul>
+					    					<li>
+					    						play new PlaySparkApp
+					    					</li>
+					    				</ul>
+					    				</div>
+					    				En segundo lugar añadieromos al archivo build.sbt las dependencias necesarias para que podamos utilizar Spark.
+										Ahora pasaremos a crear la aplicación de Spark escribiendo el codigo en Application.scala como se muestra en el ejemplo de la izquierda.
+										Por último compilaremos y lanzaremos nuestra aplicación la cual podremos ver <a href="http://localhost:9000/">localhost:9000</a>.
+										<div class="command-text">
+											<ul>
+								    			<li>play clean compile dist</li>
+								    			<li>play run</li>
+								    		</ul>				    				
+										</div>
+					    			</h2>
+						    		
+					    		</div>
+					    	</div>
+					    	
+					    </div>
+					</section>
+					<section id="slide-5" class="homeSlide">
+						<div class="bcg">
+					    	<div class="hsContainer">
+					    		<div class="title-little">DOCUMENTACIÓN</div>
+				    			<div class="hsContent">
+						    		<h2>En estos enlaces puedes encontrar información que te puede resultar de interés para profundizar en el conocimiento de estas herramientas:</br></br>
+
+						    		<img src="@routes.Assets.at("img/spark-logo.png")" class="log"><a href="http://spark.apache.org/documentation.html">Apache Spark</a></br></br>
+						    		<img src="@routes.Assets.at("img/play_full_color.png")" class="log"><a href="https://www.playframework.com/documentation/2.3.x/Home">Play framework</a></br></br>
+						    		<img src="@routes.Assets.at("img/scala-logo-red-footer.png")" class="log"><a href="http://www.scala-lang.org/documentation/">Scala</a></br>
+						    		</h2>
+					    		</div>
+					    	</div>
+					    	
+					    </div>
+					</section>
+				
+		</main>
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="javascripts/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+        <script src="@routes.Assets.at("javascripts/imagesloaded.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/skrollr.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/_main.js")" type="text/javascript"></script>
+		<script src="@routes.Assets.at("javascripts/highlight.pack.js")" type="text/javascript"></script>	
+		<script>hljs.initHighlightingOnLoad();</script>
+
+
+    </body>
+</html>
