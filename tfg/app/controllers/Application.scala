@@ -66,7 +66,7 @@ object Application extends Controller {
    val form = Form(
     single("opcion" -> text)    
   )
-   //Ahora solo queda hacer una busqueda en función de lo elegido
+   //Cuando pulsamos el botón con la gasolinera elegida nos envia a la página con el mapa.
   def submit = Action { implicit request =>
     val fname = form.bindFromRequest
     val a=fname.get

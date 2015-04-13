@@ -1,6 +1,7 @@
 @(message: Array[String], columna1: Array[String], prueba: Array[(String, String, String, String, String, String)])
 
 @main("Welcome to Spark") {
+
 	<form method="post">
 
 				@for(columna1 <- columna1){
@@ -9,11 +10,12 @@
 		 	
 		 	<input type="submit">
     </form>
-    
+   
 
    
     @for(message <- message) {
 		<dt>@message</dt>
 		}
 	@prueba
+	
 }

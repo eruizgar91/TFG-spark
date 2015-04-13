@@ -1,0 +1,7 @@
+[0m[[0mdebug[0m] [0mStarting sandboxed run...[0m
+[0m[[0mdebug[0m] [0mWaiting for threads to exit or System.exit to be called.[0m
+[0m[[0mdebug[0m] [0mWaiting for thread run-main to exit[0m
+[0m[[0minfo[0m] [0mStarting scala interpreter...[0m
+[0m[[0mdebug[0m] [0m  Boot classpath: /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/resources.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/rt.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/jsse.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/jce.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/charsets.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/rhino.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/jfr.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/classes:/home/eruizgar/.sbt/boot/scala-2.10.0/lib/scala-library.jar[0m
+[0m[[0mdebug[0m] [0m  Classpath: /home/eruizgar/twitter4j-tutorial/target/scala-2.10/classes:/home/eruizgar/.ivy2/cache/org.twitter4j/twitter4j-stream/jars/twitter4j-stream-3.0.3.jar:/home/eruizgar/.ivy2/cache/org.twitter4j/twitter4j-core/jars/twitter4j-core-3.0.3.jar:/home/eruizgar/.sbt/boot/scala-2.10.0/lib/scala-compiler.jar:/home/eruizgar/.sbt/boot/scala-2.10.0/lib/jline.jar:/home/eruizgar/.sbt/boot/scala-2.10.0/lib/jansi.jar:/home/eruizgar/.sbt/boot/scala-2.10.0/lib/scala-reflect.jar[0m
+[0m[[0minfo[0m] [0m[0m

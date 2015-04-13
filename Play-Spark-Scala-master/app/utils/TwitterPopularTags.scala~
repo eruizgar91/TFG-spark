@@ -37,8 +37,8 @@ object TwitterPopularTags {
       .set("spark.akka.logLifecycleEvents", "true")
 
     val ssc = new StreamingContext(conf, Seconds(2))
-    //val filters = Seq("Fifa")
-    val stream = TwitterUtils.createStream(ssc, Option(twitter.getAuthorization()))
+    val filters = Seq("Fifa")
+    val stream = TwitterUtils.createStream(ssc, Option(twitter.getAuthorization()), filters)
 
     val hashTags = stream.flatMap(status => status.getText.split(" ").filter(_.startsWith("#")))
     
@@ -57,12 +57,12 @@ object TwitterPopularTags {
       topList.foreach { case (count, tag) => println("%s (%s tweets)".format(tag, count)) }
     })
 
-   /* topCounts10.foreachRDD(rdd => {
+    topCounts10.foreachRDD(rdd => {
       val topList = rdd.take(5)
       println("\nPopular topics in last 10 seconds (%s total):".format(rdd.count()))
       topList.foreach { case (count, tag) => println("%s (%s tweets)".format(tag, count)) }
     })
-    */
+    
     //Imprimir los tweets al segundo
     /*
     val tweets = TwitterUtils.createStream(ssc, Option(twitter.getAuthorization()))

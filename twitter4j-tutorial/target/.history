@@ -1,0 +1,5 @@
+update
+console
+run-main bcomposes.twitter.StatusStreamer
+console
+run-main bcomposes.twitter.StatusStreamer
